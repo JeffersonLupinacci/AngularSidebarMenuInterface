@@ -1,0 +1,52 @@
+<div id="sidebar-wrapper">
+  <div class="sidebar">
+    <div class="content-container" style=" height:100%;">
+
+      <perfect-scrollbar class="scroll-container" [config]="config" [scrollIndicators]="false">
+        <div class="scrollable-content">
+
+          <div class="sidebar-user">
+            <img class="sidebar-image" src="https://randomuser.me/api/portraits/men/1.jpg">
+            <p-menu #dropmenu popup="popup" [model]="dropmenuitems" [style]="{'font-size': '12px'}"></p-menu>
+            <p class="sidebar-user-dropdown" (click)="dropmenu.toggle($event)">
+              <span>Filipe Franco Comastri</span>
+              <i class="fa fa-caret-down"></i>
+            </p>
+          </div>
+
+          <div class="sidebar-search">
+            <input type="text" placeholder="Digite para buscar..." name="term" [(ngModel)]="term" aria-label="Digite para buscar...">
+          </div>
+
+          <div class="sidebar-menu" *ngFor="let menuitem of menu | filtersidebar : term ">
+            <div class="sidebar-group" [ngClass]="!menuExpanded(menuitem.expanded) ? 'expanded' : '' ">
+              <div class="sidebar-group-title" (click)="toggleExpand(menuitem)">
+                <div class="menu-icon {{ menuitem.icon }}"></div>
+                {{ menuitem.group }}
+                <div class="menu-direction" [ngClass]="menuExpanded(menuitem.expanded) ? 'fa fa-angle-left' : 'fa fa-angle-down' "></div>
+              </div>
+              <div [ngClass]="menuExpanded(menuitem.expanded) ? 'collapse' : '' ">
+                <ul>
+                  <li *ngFor="let i of menuitem.items">
+                    <a class="sidebar-group-item">{{i.name}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-favorites" style="width:220px">
+            <ul>
+              <li *ngFor="let i of favorites()" [(pTooltip)]="i.name" tooltipPosition="right">
+                <a class="sidebar-group-item">
+                  <i class="{{i.icon}}"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </perfect-scrollbar>
+
+    </div>
+  </div>
+</div>
