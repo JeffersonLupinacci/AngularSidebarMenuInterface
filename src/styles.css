@@ -1,5 +1,6 @@
 html {
     overflow-y: scroll;
+    height: 100%;
 }
 
 body {
@@ -8,6 +9,11 @@ body {
     margin: 0;
     padding: 0;
     background: #f3f3f4 !important;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    background-color: #edf0f5;
+    height: 100%;
 }
 
 .row {
@@ -47,35 +53,84 @@ body {
     left: 150px;
 }
 
-#page-wrapper:not(.open) .sidebar .sidebar-user ,
+#page-wrapper:not(.open) .sidebar .sidebar-user,
 #page-wrapper:not(.open) .sidebar .sidebar-search,
-#page-wrapper:not(.open) .sidebar .sidebar-menu{
-display: none;
+#page-wrapper:not(.open) .sidebar .sidebar-menu {
+    display: none;
 }
 
-#page-wrapper.open .sidebar .sidebar-favorites{
-display: none;
+#page-wrapper.open .sidebar .sidebar-favorites {
+    display: none;
 }
+
 
 /* Fonts */
 
 @font-face {
-  font-family: 'Montserrat';
-  src: url('./assets/fonts/montserrat-regular-webfont.eot');
-  src: url('./assets/fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
-  url('./assets/fonts/montserrat-regular-webfont.woff') format('woff'),
-  url('./assets/fonts/montserrat-regular-webfont.ttf') format('truetype'),
-  url('./assets/fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Montserrat';
+    src: url('./assets/fonts/montserrat-regular-webfont.eot');
+    src: url('./assets/fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/montserrat-regular-webfont.woff') format('woff'), url('./assets/fonts/montserrat-regular-webfont.ttf') format('truetype'), url('./assets/fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  @font-face {
-      font-family: 'Montserrat';
-      src: url('./assets/fonts/montserrat-regular-webfont.svg') format('svg');
-  }
-  select {
-      font-family: Arial, Helvetica, sans-serif;
-  }
+    @font-face {
+        font-family: 'Montserrat';
+        src: url('./assets/fonts/montserrat-regular-webfont.svg') format('svg');
+    }
+    select {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+
+.ui-messages-error {
+    background-color: #fff;
+    text-align: left;
+    margin: 0;
+    margin-top: 4px;
+    font-size: 12px;
+}
+
+.filter-box {
+    padding-left: 8px;
+    padding-top: 20px;
+    padding-right: 8px;
+    padding-bottom: 0px;
+    background: #fff;
+    border-bottom: solid 1px #f0f0f0;
+}
+
+.filter-title {
+    font: #666;
+    font-size: 10px;
+    border-bottom: solid 1px #f0f0f0;
+}
+
+.content-box {
+    font-size: 14px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    border-bottom: solid 1px #f0f0f0;
+}
+
+.filter-box label {
+    font: #666;
+    font-size: 12px;
+}
+
+.ui-datatable th.ui-state-active,
+.ui-paginator .ui-paginator-page.ui-state-active,
+.ui-state-highlight {
+    background-color: #138496 !important;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
 }

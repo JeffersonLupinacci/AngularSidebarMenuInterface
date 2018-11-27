@@ -1,0 +1,54 @@
+<div class="login-body">
+  <div id="login-wrapper">
+    <div id="login-container" style="height:100%">
+
+      <span class="title">Login</span>
+
+      <div class="ui-g ui-fluid">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+          <div class="ui-g-12 ui-fluid">
+            <input pInputText formControlName="email" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget"
+              placeholder="E-mail" />
+            <app-message-validation [control]="loginForm.controls['email']" error="email"></app-message-validation>
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <input pInputText formControlName="password" type="password" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget"
+              placeholder="Senha" />
+            <app-message-validation [control]="loginForm.controls['password']" error="required"></app-message-validation>
+          </div>
+
+          <!--<div class="ui-g-12 ui-md-6">
+            <p-checkbox formControlName="remember" value="true" label="Lembrar"></p-checkbox>
+          </div>
+
+          <div class="ui-g-12 ui-md-6">
+            <a href="#">Esqueci a senha</a>
+          </div>-->
+
+          <div class="ui-g-12 ui-fluid">
+            <button type="button" type="submit" class="btn btn-info" style="height: 30px; padding-top:5px" [disabled]="!loginForm.valid || logging"
+              #submit>
+
+              <span *ngIf="logging">
+                <i class='fa fa-circle-o-notch fa-spin'></i> Validando...
+              </span>
+
+              <span *ngIf="!logging">
+                <i class='fa fa-sign-in'></i> Acessar o sistema
+              </span>
+
+            </button>
+          </div>
+
+          <div class="ui-g-12 ui-fluid" *ngIf="user_message != null">
+            <span style="color:red;">{{user_message}}</span>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

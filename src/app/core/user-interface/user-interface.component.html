@@ -1,0 +1,24 @@
+<div id="page-wrapper" [ngClass]="{open: toggle}">
+
+  <app-user-sidebar></app-user-sidebar>
+  <div class="row page-header">
+    <div class="col-9">
+      <button type="button" class="btn btn-info" (click)="toggleSidebar()">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+    <div class="col-3">
+      {{ auth.jwtPayload?.nome }}
+    </div>
+  </div>
+
+  <div id="content-wrapper">
+    <div style="margin-left:22px;margin-top:10px;">
+      <app-breadcrumb></app-breadcrumb>
+    </div>
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-2">403</h1>
+    <p class="lead">
+      <i class="fa fa-warning text-danger"></i> Acesso negado/proibido</p>
+    <p>O recurso que você esta tentando acessar foi bloqueado.</p>
+    <p>Peça permissão ao administrador do sistema para visualizar.</p>
+    <hr class="my-4">
+    <p>.</p>
+    <p class="lead">
+        <button type="button" class="btn btn-info" [routerLink]="['/dashboard']" >
+          <i class="fa fa-chevron-left"></i> Dashboard
+        </button>
+
+        <button type="button" class="btn btn-danger" [routerLink]="['/logout']" >
+          <i class="fa fa-sign-out"></i> Efetuar Logout
+        </button>
+
+    </p>
+  </div>
+</div>

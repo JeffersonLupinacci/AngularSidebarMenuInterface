@@ -1,0 +1,91 @@
+<div class="filter-box">
+  <form [formGroup]="filterForm" (ngSubmit)="onFilterSubmit(value)">
+    <div class="row">
+      <div class="col-xl-12 fluid filter-title">
+        Filtros:
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 fluid">
+        <span class="ui-float-label" style="margin-top:10px;">
+          <input id="float-input" formControlName="fantasia" type="text" size="30" pInputText>
+          <label for="float-input">Filtrar por nome fantasia</label>
+        </span>
+      </div>
+      <div class="col-xl-3 fluid">
+        <span class="ui-float-label" style="margin-top:10px;">
+          <input id="float-input" formControlName="cidade" type="text" size="30" pInputText>
+          <label for="float-input">Filtrar por cidade</label>
+        </span>
+      </div>
+      <div class="col-xl-3 fluid"></div>
+      <div class="col-xl-3">
+        <div class="row">
+          <div class="col-xl-6 col-sm-3">
+            <button type="submit" class="btn btn-info">
+              <i class="fa fa-search"></i> Filtrar
+            </button>
+          </div>
+          <div class="col-xl-6 col-sm-3">
+            <button type="button" class="btn btn-info" [routerLink]="['/contratos/novo']" *ngIf="podeEditar">
+              <i class="fa fa-plus"></i> Novo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="content-box">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-dataTable [responsive]="true" emptyMessage="Nenhum registro encontrado" [paginator]="true" [lazy]="true" (onLazyLoad)="onDataGridLoad($event)"
+        [rows]="pagination.size" [totalRecords]="pagination.totalElements" [rowsPerPageOptions]="pagination.rowsPerPage" [reorderableColumns]="true"
+        [sortField]="pagination.sortField" [sortOrder]="pagination.sortOrder" [value]="data" #dt>
+
+        <p-column field="codigo" header="Cód" [sortable]="true"></p-column>
+        <p-column field="fantasia" header="Nome Fantasia" [sortable]="true"></p-column>
+        <p-column field="cnpj" header="CNPJ" [sortable]="true"></p-column>
+        <p-column field="endereco.cidade" header="Cidade"></p-column>
+
+        <p-column field="dataRegistro" header="Data" styleClass="col-data" [sortable]="true">
+          <ng-template let-data="rowData" pTemplate="body">
+            <span>{{ data.dataRegistro | date:'dd/MM/yyyy' }}</span>
+          </ng-template>
+        </p-column>
+        <p-column field="ativo" header="Status" [sortable]="true">
+          <ng-template let-data="rowData" pTemplate="body">
+            <a href="javascript:;" [pTooltip]="data.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top" (click)="onAlteraStatus(data)">
+              {{ data.ativo ? 'Ativo' : 'Inativo' }}
+            </a>
+          </ng-template>
+        </p-column>
+        <p-column styleClass="col-acoes">
+          <ng-template let-data="rowData" pTemplate="body">
+            <div class="text-center">
+              <button type="button" class="btn btn-info" [routerLink]="['/contratos', data.codigo]"
+              pTooltip="Editar" tooltipPosition="top" *ngIf="podeEditar">
+                <i class="fa fa-pencil"></i>
+              </button>
+
+              <button type="button" class="btn btn-danger" (click)="onRemover(data)" pTooltip="Remover"
+                tooltipPosition="top" *ngIf="podeRemover">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+    <div class="row">
+      <div class="col-xl-12 fluid filter-title">
+        Total de registros encontrados:
+        <strong>{{pagination.totalElements}}</strong>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <a label="Novo Contrato" routerLink="/contratos/novo"></a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,135 @@
+<form [formGroup]="contrato" (ngSubmit)="onPersisteContrato(contrato)">
+  <div class="content-box filter-box">
+    <div class="ui-g">
+      <div class="ui-g-12">
+
+        <div class="row">
+          <div class="col-xl-12 fluid filter-title">
+            Informe os campos para confirmar:
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="ui-g-6 ui-fluid">
+            <span class="ui-float-label">
+              <input id="float-input" formControlName="fantasia" type="text" size="30" pInputText>
+              <label for="float-input">Nome fantasia</label>
+            </span>
+            <app-message-validation [control]="contrato.controls['fantasia']" error="minlength"></app-message-validation>
+            <app-message-validation [control]="contrato.controls['fantasia']" error="required"></app-message-validation>
+          </div>
+          <div class="ui-g-6 ui-fluid">
+            <span class="ui-float-label">
+              <input id="float-input" formControlName="razaoSocial" type="text" size="30" pInputText>
+              <label for="float-input">Razão social</label>
+            </span>
+            <app-message-validation [control]="contrato.controls['razaoSocial']" error="minlength"></app-message-validation>
+            <app-message-validation [control]="contrato.controls['razaoSocial']" error="required"></app-message-validation>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="ui-g-3 ui-fluid">
+            <span class="ui-float-label">
+              <p-inputMask id="float-input" mask="99.999.999/9999-99" formControlName="cnpj"></p-inputMask>
+              <label for="float-input">CNPJ</label>
+            </span>
+            <app-message-validation [control]="contrato.controls['cnpj']" error="required"></app-message-validation>
+          </div>
+          <div class="ui-g-9 ui-fluid">
+            <span class="ui-float-label">
+              <input id="float-input" formControlName="email" type="text" size="30" pInputText>
+              <label for="float-input">E-mail</label>
+            </span>
+            <app-message-validation [control]="contrato.controls['email']" error="email"></app-message-validation>
+          </div>
+        </div>
+
+        <div formGroupName="endereco">
+          <div class="row">
+            <div class="ui-g-9 ui-fluid">
+              <span class="ui-float-label">
+                <input id="float-input" formControlName="logradouro" type="text" size="30" pInputText>
+                <label for="float-input">Logradouro</label>
+              </span>
+              <app-message-validation [control]="contrato.controls['endereco'].controls['logradouro']" error="required"></app-message-validation>
+            </div>
+            <div class="ui-g-3 ui-fluid">
+              <span class="ui-float-label">
+                <input id="float-input" formControlName="numero" type="text" size="30" pInputText>
+                <label for="float-input">Número</label>
+              </span>
+              <app-message-validation [control]="contrato.controls['endereco'].controls['numero']" error="required"></app-message-validation>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ui-g-4 ui-fluid">
+              <span class="ui-float-label">
+                <input id="float-input" formControlName="bairro" type="text" size="30" pInputText>
+                <label for="float-input">Bairro</label>
+              </span>
+              <app-message-validation [control]="contrato.controls['endereco'].controls['bairro']" error="required"></app-message-validation>
+            </div>
+            <div class="ui-g-4 ui-fluid">
+              <span class="ui-float-label">
+                <input id="float-input" formControlName="cidade" type="text" size="30" pInputText>
+                <label for="float-input">Cidade</label>
+              </span>
+              <app-message-validation [control]="contrato.controls['endereco'].controls['cidade']" error="required"></app-message-validation>
+            </div>
+            <div class="ui-g-4 ui-fluid">
+              <p-dropdown [options]="estados" formControlName="estado" [filter]="true" filterBy="label,value.name" placeholder="Selecione o estado"
+                [style]="{'padding':'2px', 'width':'100%'}"></p-dropdown>
+              <app-message-validation [control]="contrato.controls['endereco'].controls['estado']" error="required"></app-message-validation>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ui-g-3 ui-fluid">
+              <span class="ui-float-label">
+                <p-inputMask id="float-input" mask="99999-999" formControlName="cep"></p-inputMask>
+                <label for="float-input">Cep</label>
+              </span>
+              <app-message-validation [control]="contrato.controls['endereco'].controls['cep']"></app-message-validation>
+            </div>
+            <div class="ui-g-9 ui-fluid">
+              <span class="ui-float-label">
+                <input id="float-input" formControlName="complemento" type="text" size="30" pInputText>
+                <label for="float-input">Complemento</label>
+              </span>
+              <app-message-validation [control]="contrato.controls['endereco'].controls['complemento']"></app-message-validation>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="ui-g-12 ui-fluid">
+            <span class="ui-float-label">
+              <input id="float-input" formControlName="aliases" type="text" size="30" pInputText>
+              <label for="float-input">Aliases do banco de dados</label>
+            </span>
+            <app-message-validation [control]="contrato.controls['aliases']"></app-message-validation>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="content-box">
+
+    <div class="row">
+      <div class="col-xl-2">
+        <button type="submit" class="btn btn-info" [disabled]="contrato.invalid">
+          <i class="fa fa-check"></i> Confirmar
+        </button>
+      </div>
+      <div class="col-xl-10">
+        <button type="button" class="btn btn-info" [routerLink]="['/contratos']">
+          <i class="fa fa-search"></i> Voltar para a pesquisa
+        </button>
+      </div>
+    </div>
+
+  </div>
+</form>

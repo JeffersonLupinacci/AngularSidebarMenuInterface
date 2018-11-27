@@ -1,0 +1,80 @@
+<form [formGroup]="usuario" (ngSubmit)="onPersiste(usuario)">
+  <div class="content-box filter-box">
+    <div class="ui-g">
+      <div class="ui-g-12">
+
+        <div class="row">
+          <div class="col-xl-12 fluid filter-title">
+            Informe os campos para confirmar:
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="ui-g-6 ui-fluid">
+            <span class="ui-float-label">
+              <input id="float-input" formControlName="nome" type="text" size="30" pInputText>
+              <label for="float-input">Nome</label>
+            </span>
+            <app-message-validation [control]="usuario.controls['nome']" error="minlength"></app-message-validation>
+            <app-message-validation [control]="usuario.controls['nome']" error="required"></app-message-validation>
+          </div>
+          <div class="ui-g-6 ui-fluid">
+            <span class="ui-float-label">
+              <input id="float-input" formControlName="email" type="text" size="30" pInputText>
+              <label for="float-input">Email</label>
+            </span>
+            <app-message-validation [control]="usuario.controls['email']" error="email"></app-message-validation>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="isSofthouse">
+          <div class="ui-g-12 ui-fluid">
+            <span class="ui-float-label">
+              <p-autoComplete formControlName="contrato" [suggestions]="contratoSugestao" (completeMethod)="onContratoFindBy($event)" [dropdown]="true"
+                field="fantasia" forceSelection="true" #contrato></p-autoComplete>
+              <label for="float-input">Contrato</label>
+            </span>
+            <app-message-validation [control]="usuario.controls['contrato']" error="minlength"></app-message-validation>
+            <app-message-validation [control]="usuario.controls['contrato']" error="required"></app-message-validation>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="ui-g-6 ui-fluid">
+            <p-listbox [options]="permissoesDisponiveis" multiple="multiple" checkbox="checkbox" filter="filter" optionLabel="descricao"
+              [(ngModel)]="permissoesAtivas" [ngModelOptions]="{standalone: true}">
+              <p-header>
+                <i class="fa fa-key"></i>
+                Selecione as permissões do usuário
+              </p-header>
+            </p-listbox>
+          </div>
+          <div class="ui-g-6 ui-fluid">
+            Permissões aplicadas:
+            <span *ngFor="let p of permissoesAtivas; let i = index" class="badge badge-secondary" style="padding:5px; margin-left:5px;">
+              <a (click)="onRemoverPermissao(p, i)" style="cursor:pointer">{{p.descricao}}</a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="content-box">
+
+    <div class="row">
+      <div class="col-xl-2">
+        <button type="submit" class="btn btn-info" [disabled]="usuario.invalid">
+          <i class="fa fa-check"></i> Confirmar
+        </button>
+      </div>
+      <div class="col-xl-10">
+        <button type="button" class="btn btn-info" [routerLink]="['/usuarios']">
+          <i class="fa fa-search"></i> Voltar para a pesquisa
+        </button>
+      </div>
+    </div>
+
+  </div>
+</form>
