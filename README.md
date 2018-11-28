@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
+![Print 1](https://raw.githubusercontent.com/JeffersonLupinacci/AngularSidebarMenuInterface/master/prints/print1.png)
+
+![Print 2](https://raw.githubusercontent.com/JeffersonLupinacci/AngularSidebarMenuInterface/master/prints/print2.png)
+
+![Print 3](https://raw.githubusercontent.com/JeffersonLupinacci/AngularSidebarMenuInterface/master/prints/print3.png)
+
+![Print 4](https://raw.githubusercontent.com/JeffersonLupinacci/AngularSidebarMenuInterface/master/prints/print4.png)
+
+![Print 5](https://raw.githubusercontent.com/JeffersonLupinacci/AngularSidebarMenuInterface/master/prints/print5.png)
+
+![Print 6](https://raw.githubusercontent.com/JeffersonLupinacci/AngularSidebarMenuInterface/master/prints/print6.png)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
